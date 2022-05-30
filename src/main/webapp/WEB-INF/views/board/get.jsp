@@ -88,7 +88,11 @@
 											<i class="fa-solid fa-trash-can"></i>
 										</span>
 									</div>
-									\${list[i].content }
+									<span class="badge bg-light text-dark">
+										<i class="fa-solid fa-user"></i>
+										\${list[i].writerNickName}
+									</span>
+									<span id="replyContent\${list[i].id }"><span>
 	
 	
 								</div>
@@ -111,6 +115,7 @@
 								
 								`);
 						replyListElement.append(replyElement);
+						$("#replyContent" + list[i].id).text(list[i].content);
 						
 					} // end of for
 					
@@ -141,6 +146,7 @@
 								listReply();
 							},
 							error : function() {
+								$("#replyMessage1").show().text("댓글을 수정할 수 없습니다.").fadeOut(3000);
 								console.log("수정 실패");
 							},
 							complete : function() {
@@ -187,6 +193,7 @@
 									$("#replyMessage1").show().text(data).fadeOut(3000);
 								},
 								error : function() {
+									$("#replyMessage1").show().text("댓글을 삭제할 수 없습니다.").fadeOut(3000);
 									console.log(replyId + "댓글 삭제 중 문제 발생됨");
 								},
 								complete : function() {
@@ -229,6 +236,7 @@
 					// console.log(data);
 				},
 				error : function() {
+					$("#replyMessage1").show().text("댓글을 작성할 수 없습니다.").fadeOut(3000);
 					console.log("문제 발생");
 				},
 				complete : function() {

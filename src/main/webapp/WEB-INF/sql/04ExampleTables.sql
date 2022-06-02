@@ -56,6 +56,7 @@ MODIFY COLUMN memberId VARCHAR(20) NOT NULL AFTER content;
 
 SELECT * FROM Reply ORDER BY 1 DESC;
 
+
 	SELECT r.id, 
 	       r.board_id boardId,
 	       r.content,
@@ -65,3 +66,33 @@ SELECT * FROM Reply ORDER BY 1 DESC;
 	FROM Reply r JOIN Member m ON r.memberId = m.id
 	WHERE r.board_id = 15
 	ORDER BY r.id
+;
+-- Board에 fileName 컬럼 추가????? 그러지 말고 파일 테이블을 만들자
+DESC Board;
+
+CREATE TABLE File (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	boardId INT NOT NULL REFERENCES Board(id),
+    fileName VARCHAR(255) NOT NULL
+);
+
+DESC File;
+
+SELECT * FROM File;
+SELECT * FROM Board ORDER BY 1 DESC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
